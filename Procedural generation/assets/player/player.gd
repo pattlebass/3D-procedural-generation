@@ -26,12 +26,12 @@ func _ready():
 
 
 func _physics_process(delta):
-	#print(translation.y)
+	print(translation.y)
 	if walking:
 		walk()
 	else:
 		fly()
-	print(move_and_slide(velocity, Vector3.UP))
+	move_and_slide(velocity, Vector3.UP)
 
 func _unhandled_input(event):
 	if Input.is_action_just_pressed("ui_cancel"):
