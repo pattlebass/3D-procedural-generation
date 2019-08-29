@@ -12,14 +12,14 @@ const FLY_SPEED = 20
 const FLY_ACCEL = 4
 
 #walk
-var gravity = 9.8 * 1
+var gravity = 9.8 * 1.5
 const MAX_SPEED = 20
 const MAX_RUNNING_SPEED = 30
 const ACCEL = 4
 const DEACCEL = 8
 
 #jump
-const JUMP_HEIGHT = 5
+const JUMP_HEIGHT = 8
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -96,7 +96,8 @@ func walk():
 	temp_velocity.y = 0
 	
 	#apply gravity
-	velocity.y += gravity * get_physics_process_delta_time() * -1
+	if not is_on_floor():
+		velocity.y += gravity * get_physics_process_delta_time() * -1
 	
 	var target = direction * speed
 	
